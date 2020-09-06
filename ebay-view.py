@@ -18,7 +18,7 @@ async def ebay_view(ctx, link, number):
 				color = discord.Color.from_rgb(68, 128, 123),
 				timestamp = datetime.datetime.now(datetime.timezone.utc)
 				 )
-	
+
 	embed.set_footer(icon_url = link_preview(link, requests.get(link).content.decode("utf-8")).image)
 	bot.log_channel = bot.get_channel(log_channel_id)
 	for num in range(number):
@@ -27,12 +27,12 @@ async def ebay_view(ctx, link, number):
 
 @bot.event
 async def on_ready():
-	print(f"Logged in as {client.user} and connected to Discord (ID: {client.user.id})")
+	print(f"Logged in as {bot.user} and connected to Discord (ID: {bot.user.id})")
 	game = discord.Game(name = ">help")
 	await bot.change_presence(activity = game)
 
 	embed = discord.Embed(
-			title = f"{client.user.name} ONLINE!",
+			title = f"{bot.user.name} ONLINE!",
 			color = discord.Color.from_rgb(68, 128, 123),
 			timestamp = datetime.datetime.now(datetime.timezone.utc)
 			)
@@ -44,4 +44,3 @@ async def on_ready():
 
 if __name__ == "__main__":
 		bot.run('NzUxOTY3Nzk0MjkxMDE1Nzcy.X1QylQ.12uwrSqef_Vllv5ZGHZ39Tc-p-M',  reconnect=True)
-			
